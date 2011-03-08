@@ -8,12 +8,9 @@ INSTALL
 
 1. Edit doeshunchentootwork.lisp.
 2. Modify the shebang to point to your Common Lisp implementation.
-3. Open hunchentoot.sh.
-4. Modify $HUNCHENTOOT_DIR to point to this directory.
-
-     Example:
-
-     $ pwd
-     /srv/d_hactar/usr/src/doeshunchentootwork
-
-5. Follow service installation instructions.
+3. Run chmod a+x doeshunchentootwork.lisp
+4. Edit hunchentoot.sh.
+5. Modify $HUNCHENTOOT_DIR to point to this directory.
+6. Modify stop and restart cases to kill your Common Lisp implementation.
+7. Follow daemon installation instructions.
+8. Run service hunchentoot start
