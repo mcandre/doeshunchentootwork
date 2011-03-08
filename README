@@ -1,0 +1,11 @@
+doeshunchentootwork - Test Hunchentoot on your system
+
+HOMEPAGE
+
+http://doeshunchentootwork.yellosoft.us/
+
+INSTALL
+
+1. Open hunchentoot.sh.
+2. Modify $HUNCHENTOOT_DIR.
+3. Follow service installation instructions.
