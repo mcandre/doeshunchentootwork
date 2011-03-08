@@ -6,6 +6,14 @@ http://doeshunchentootwork.yellosoft.us/
 
 INSTALL
 
-1. Open hunchentoot.sh.
-2. Modify $HUNCHENTOOT_DIR.
-3. Follow service installation instructions.
+1. Edit doeshunchentootwork.lisp.
+2. Modify the shebang to point to your Common Lisp implementation.
+3. Open hunchentoot.sh.
+4. Modify $HUNCHENTOOT_DIR to point to this directory.
+
+     Example:
+
+     $ pwd
+     /srv/d_hactar/usr/src/doeshunchentootwork
+
+5. Follow service installation instructions.
