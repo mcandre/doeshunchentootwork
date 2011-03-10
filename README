@@ -14,5 +14,5 @@ INSTALL
  6. Modify $HUNCHENTOOT_DIR to point to this directory
  7. Modify stop and restart cases to kill your Common Lisp implementation
  8. Follow daemon installation instructions
- 9. Run service hunchentoot start
+ 9. Run /etc/init.d/hunchentoot start
 10. Open http://localhost:4242/
