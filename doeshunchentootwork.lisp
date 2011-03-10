@@ -51,7 +51,7 @@ exit
     (:link :rel "favorites icon" :href "/favicon.ico"))
   (:body :style "text-align: center;"
    (:p (:a :href "https://github.com/mcandre/doeshunchentootwork" "GitHub"))
-   (:h1 "Does Hunchentoot work?")
+   (:h1 "Does Hunchentoot Work?")
    ,@body))))
 
 (defmacro defurl (name &body body)
