@@ -60,7 +60,7 @@ exit
 (format t "Adding index~%")
 
 (defurl "" (standard-page
- (:title "Does Hunchentoot work?")
+ (:title "Does Hunchentoot Work?")
  (:p "You betcha!")
  (:h2 "Implementation")
  (:p
