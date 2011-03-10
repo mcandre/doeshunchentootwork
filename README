@@ -13,9 +13,8 @@ REQUIREMENTS
 
 SETUP
 
- 1. Run git clone https://github.com/mcandre/doeshunchentootwork.git
- 2. Edit doeshunchentootwork.lisp
- 3. Modify the shebang to point to your Common Lisp implementation
- 4. Run chmod a+x doeshunchentootwork.lisp
- 5. Run ./doeshunchentootwork.lisp
- 6. Open http://locahost:4242/
+ 1. Edit doeshunchentootwork.lisp
+ 2. Modify the shebang to point to your Common Lisp implementation
+ 3. Run chmod a+x doeshunchentootwork.lisp
+ 4. Run ./doeshunchentootwork.lisp
+ 5. Open http://locahost:4242/
