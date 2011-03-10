@@ -4,15 +4,18 @@ HOMEPAGE
 
 http://doeshunchentootwork.yellosoft.us/
 
-INSTALL
+REQUIREMENTS
+
+ - Common Lisp with thread support
+ - Quicklisp
+ - hunchentoot
+ - cl-who
+
+SETUP
 
  1. Run git clone https://github.com/mcandre/doeshunchentootwork.git
  2. Edit doeshunchentootwork.lisp
  3. Modify the shebang to point to your Common Lisp implementation
  4. Run chmod a+x doeshunchentootwork.lisp
- 5. Edit hunchentoot.sh
- 6. Modify $HUNCHENTOOT_DIR to point to this directory
- 7. Modify stop and restart cases to kill your Common Lisp implementation
- 8. Follow daemon installation instructions
- 9. Run /etc/init.d/hunchentoot start
-10. Open http://localhost:4242/
+ 5. Run ./doeshunchentootwork.lisp
+ 6. Open http://locahost:4242/
