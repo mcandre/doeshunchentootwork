@@ -23,6 +23,9 @@ exit
   (asdf:oos 'asdf:load-op 'hunchentoot :verbose nil)
   (asdf:oos 'asdf:load-op 'cl-who :verbose nil))
 
+(format t "Setting content type to UTF-8~%")
+(setf hunchentoot:*default-content-type* "text/html; charset=utf-8")
+
 (format t "Creating acceptor~%")
 
 (defvar acceptor (make-instance 'hunchentoot:acceptor :port 4242))
@@ -41,12 +44,12 @@ exit
 ;;; http://www.adampetersen.se/articles/lispweb.htm
 (defmacro standard-page ((&key title) &body body)
 `(cl-who:with-html-output-to-string (*standard-output* nil :prologue t :indent t)
-  (:html :xmlns "http://www.w3.org/1999/xhtml" :xml\:lang "en" :lang "en"
+  (:html
    (:head
     (:title ,title)
     (:meta :http-equiv "Content-Type" :content "text/html;charset=utf-8"))
   (:body :style "text-align: center;"
-   (:a :href "https://github.com/mcandre/doeshunchentootwork" "GitHub")
+   (:p (:a :href "https://github.com/mcandre/doeshunchentootwork" "GitHub"))
    (:h1 "Does Hunchentoot work?")
    ,@body))))
 
