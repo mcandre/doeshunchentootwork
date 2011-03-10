@@ -1,40 +1,10 @@
-#!/bin/bash
-#|
-exec ccl -l $0 ${1+"$@"}
-exit
-|#
+(in-package :cl-user)
 
-;;; doeshunchentootwork.lisp
+(defpackage :doeshunchentootwork
+  (:use :cl)
+  (:export :debug-html :standard-page :defurl :main))
 
-(format t "Loading Quicklisp~%")
-
-;;; Hide stupid Quicklisp warnings
-(handler-bind ((warning #'muffle-warning))
-  ;;; Load Quicklisp.
-  (let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp" (user-homedir-pathname))))
-    (when (probe-file quicklisp-init)
-      (load quicklisp-init))))
-
-(format t "Loading Hunchentoot~%")
-
-;;; Hide stupid warnings from dependencies
-(handler-bind ((warning #'muffle-warning))
-  ;;; Load dependencies.
-  (asdf:oos 'asdf:load-op 'hunchentoot :verbose nil)
-  (asdf:oos 'asdf:load-op 'cl-who :verbose nil))
-
-(format t "Setting content type to UTF-8~%")
-(setf hunchentoot:*default-content-type* "text/html; charset=utf-8")
-
-(format t "Creating acceptor~%")
-
-(defvar acceptor (make-instance 'hunchentoot:acceptor :port 4242))
-
-(format t "Starting server~%")
-
-(hunchentoot:start acceptor)
-
-(setq cl-who:*prologue* "<!DOCTYPE html>")
+(in-package :doeshunchentootwork)
 
 (defmacro debug-html (&body body)
 `(cl-who:with-html-output-to-string (*standard-output* nil :prologue nil :indent t)
@@ -57,38 +27,52 @@ exit
 (defmacro defurl (name &body body)
  `(progn (push (hunchentoot:create-prefix-dispatcher ,name (lambda () ,@body)) hunchentoot:*dispatch-table*)))
 
-(format t "Adding index~%")
+(defun main ()
+  (format t "Loading Hunchentoot~%")
 
-(defurl "" (standard-page
- (:title "Does Hunchentoot Work?")
- (:p "You betcha!")
- (:h2 "Implementation")
- (:p
-  #+abcl "ABCL"
-  #+allegro "Allegro CL"
-  #+clozure "CCL"
-  #+clisp "CLISP"
-  #+cmu "CMUCL"
-  #+ecl "ECL"
-  #+gcl "GCL"
-  #+lispworks "LispWorks"
-  #+sbcl "SBCL"
-  #+wcl "WCL"
-  #+xcl "XCL"
-  )
- (:h2 "Operating System")
- (:p
-  #+darwin "Mac OS X"
-  #+linux "Linux"
-  #+(and :unix (and (not :darwin) (not :linux))) "Unix"
-  #+win32 "Windows"
-  #+haiku "Haiku"
-  )
- (:h2 "*features*")
- (:p (cl-who:str *features*))))
+  (format t "Setting content type to UTF-8~%")
+  (setf hunchentoot:*default-content-type* "text/html; charset=utf-8")
 
-(push (hunchentoot:create-static-file-dispatcher-and-handler "/favicon.ico" "favicon.ico") hunchentoot:*dispatch-table*)
+  (format t "Creating acceptor~%")
 
-(format t "Looping~%")
+  (format t "Starting server~%")
 
-(loop)
+  (hunchentoot:start (make-instance 'hunchentoot:acceptor :port 4242))
+
+  (setq cl-who:*prologue* "<!DOCTYPE html>")
+
+  (format t "Adding index~%")
+
+  (defurl "" (standard-page
+   (:title "Does Hunchentoot Work?")
+   (:p "You betcha!")
+   (:h2 "Implementation")
+   (:p
+    #+abcl "ABCL"
+    #+allegro "Allegro CL"
+    #+clozure "CCL"
+    #+clisp "CLISP"
+    #+cmu "CMUCL"
+    #+ecl "ECL"
+    #+gcl "GCL"
+    #+lispworks "LispWorks"
+    #+sbcl "SBCL"
+    #+wcl "WCL"
+    #+xcl "XCL"
+    )
+   (:h2 "Operating System")
+   (:p
+    #+darwin "Mac OS X"
+    #+linux "Linux"
+    #+(and :unix (and (not :darwin) (not :linux))) "Unix"
+    #+win32 "Windows"
+    #+haiku "Haiku"
+    )
+   (:h2 "*features*")
+   (:p (cl-who:str *features*))))
+
+  (push (hunchentoot:create-static-file-dispatcher-and-handler "/favicon.ico" "favicon.ico") hunchentoot:*dispatch-table*)
+
+  (format t "Looping...~%")
+
+  (loop))

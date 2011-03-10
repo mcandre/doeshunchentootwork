@@ -16,18 +16,16 @@ HUNCHENTOOT_DIR=/srv/d_hactar/usr/src/doeshunchentootwork
 case "$1" in
   start)
     echo "Starting Hunchentoot..."
-    $HUNCHENTOOT_DIR/doeshunchentootwork.lisp > /dev/null 2>&1 &
+    $HUNCHENTOOT_DIR/doeshunchentootwork > /dev/null 2>&1 &
     ;;
   stop)
     echo "Stopping Hunchentoot..."
-    killall doeshunchentootwork.lisp
-    killall lx86cl
+    killall doeshunchentootwork
     ;;
   restart)
     echo "Restarting Hunchentoot..."
-    killall doeshunchentootwork.lisp
-    killall lx86cl
-    $HUNCHENTOOT_DIR/doeshunchentootwork.lisp > /dev/null 2>&1 &
+    killall doeshunchentootwork
+    $HUNCHENTOOT_DIR/doeshunchentootwork > /dev/null 2>&1 &
     ;;
   *)
     echo "Usage: $0 start|stop|restart"

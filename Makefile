@@ -1,7 +1,7 @@
 EXECUTABLE=doeshunchentootwork
 
-all: doeshappstackwork.lisp
-	# ...
+all: doeshunchentootwork.lisp
+	ccl -l makefile.lisp
 
 clean:
 	rm $(EXECUTABLE)
