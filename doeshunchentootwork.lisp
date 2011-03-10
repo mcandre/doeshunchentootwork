@@ -47,7 +47,8 @@ exit
   (:html
    (:head
     (:title ,title)
-    (:meta :http-equiv "Content-Type" :content "text/html;charset=utf-8"))
+    (:meta :http-equiv "Content-Type" :content "text/html;charset=utf-8")
+    (:link :rel "favorites icon" :href "/favicon.ico"))
   (:body :style "text-align: center;"
    (:p (:a :href "https://github.com/mcandre/doeshunchentootwork" "GitHub"))
    (:h1 "Does Hunchentoot work?")
@@ -85,6 +86,8 @@ exit
   )
  (:h2 "*features*")
  (:p (cl-who:str *features*))))
+
+(push (hunchentoot:create-static-file-dispatcher-and-handler "/favicon.ico" "favicon.ico") hunchentoot:*dispatch-table*)
 
 (format t "Looping~%")
 
