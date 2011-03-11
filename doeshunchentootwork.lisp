@@ -72,6 +72,5 @@
 
   (push (hunchentoot:create-static-file-dispatcher-and-handler "/favicon.ico" "favicon.ico") hunchentoot:*dispatch-table*)
 
-  (format t "Looping...~%")
-
-  (loop))
+  (format t "Waiting for input...")
+  (read-line))
