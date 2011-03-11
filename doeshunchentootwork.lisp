@@ -13,7 +13,8 @@
 ;;; From Adam Peterson's "Lisp for the Web"
 ;;; http://www.adampetersen.se/articles/lispweb.htm
 (defmacro standard-page ((&key title) &body body)
-`(cl-who:with-html-output-to-string (*standard-output* nil :prologue t :indent t)
+`(cl-who:with-html-output-to-string (*standard-output* nil :prologue nil :indent t)
+  "<!DOCTYPE html>"
   (:html
    (:head
     (:title ,title)
@@ -38,8 +39,6 @@
   (format t "Starting server~%")
 
   (hunchentoot:start (make-instance 'hunchentoot:acceptor :port 4242))
-
-  (setq cl-who:*prologue* "<!DOCTYPE html>")
 
   (format t "Adding index~%")
 
