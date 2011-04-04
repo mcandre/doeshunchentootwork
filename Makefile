@@ -4,5 +4,5 @@ all: doeshunchentootwork.lisp
 	ccl -l makefile.lisp
 
 clean:
-	rm $(EXECUTABLE)
-	rm *.*fsl
+	-rm $(EXECUTABLE)
+	-rm *.*fsl
