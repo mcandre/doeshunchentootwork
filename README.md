@@ -7,9 +7,9 @@
 ## REQUIREMENTS
 
  - Common Lisp with thread support
- - Quicklisp
- - hunchentoot
- - cl-who
+ - [Quicklisp](http://www.quicklisp.org/beta/)
+ - [hunchentoot](http://weitz.de/hunchentoot/)
+ - [cl-who](http://weitz.de/cl-who/)
 
 ## SETUP
 
